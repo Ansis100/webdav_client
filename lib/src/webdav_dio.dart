@@ -212,7 +212,7 @@ class WdDio with DioMixin implements Dio {
       {CancelToken? cancelToken}) async {
     var method = isCopy == true ? 'COPY' : 'MOVE';
     var resp = await this.req(self, method, oldPath, optionsHandler: (options) {
-      options.headers?['destination'] = Uri.encodeFull(join(self.uri, newPath));
+      options.headers?['destination'] = join(self.uri, newPath);
       options.headers?['overwrite'] = overwrite == true ? 'T' : 'F';
     }, cancelToken: cancelToken);
 
